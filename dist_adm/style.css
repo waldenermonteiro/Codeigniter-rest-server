@@ -1,0 +1,111 @@
+/*Cadastro dos Planos */
+.alert-custom{
+	text-align: center;
+	font-size: 18px;
+}
+.redacao{
+	margin-top: 5px;
+	font-size: 18px;
+}
+.p-select{
+	margin-top: 5px;
+	font-size: 18px;
+}
+@media(min-width:320px) and (max-width:380px){
+	.redacao{
+		margin-left: 20px;
+	}
+	#qtd_redacoes{
+		width: 70px;
+	}
+}
+@media(min-width:320px) and (max-width:1296px){
+	.redacao{
+		margin-right: 30%;
+	}
+}
+.label-radio{
+	font-size: 20px;
+}
+.select-custom{
+	width: 153px;
+}
+.div-linha{
+	margin-top: 130px;
+}
+@media(min-width:320px) and (max-width:767px){
+	.div-linha{
+		margin-top: 190px;
+	}
+}
+@media(min-width:320px) and (max-width:330px){
+	.button-cadastrar{
+		width: 78px;
+		padding-left: 6px;
+	}
+}
+@media(min-width:1280px){
+	.div-custom{
+		margin-left:25%;
+	}
+	.redacao{
+		margin-right: : 2%;
+	}
+}
+/* Tabelas */
+#datatable td{
+	font-size: 16px;    
+}
+/* Login */
+.alert-login{
+	text-align: center;
+	font-size: 14px;	
+}
+/* Correcao  */
+#caption{
+	height: 140px;
+}
+
+.data-redacao{
+	margin-top:-12px;
+	margin-bottom: 40px
+}
+
+@media(min-width:320px){
+
+	.thumbnail {
+		height: 208px !important;
+	}
+	.custom-thumbnail{
+		height: 315px !important;
+	}
+	.custom-image,.custom-no-caption{
+		height: 200px !important;
+	}
+	
+
+}
+@media(min-width:320px) and (max-width:767px){
+	.tema{
+		height: 80px !important;
+	}
+
+}
+@media(min-width:768px) and (max-width:991px){
+	.tema{
+		height: 80px !important;
+	}
+
+}
+@media(min-width:992px) and (max-width:1010px){
+	.tema{
+		height: 85px !important;
+	}
+
+}
+@media(min-width:1011px){
+	.tema{
+		height: 80px !important;
+	}
+
+}

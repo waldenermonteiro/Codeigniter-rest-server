@@ -6,7 +6,7 @@ class Usuarios_model extends CI_Model{
 		$sucesso = $this->db->insert("alunos", $aluno);
 		return $sucesso;
 	}
-	public function buscar2($email, $senha) {
+	public function buscarLogin($email, $senha) {
 		$this->db->select("alunos.*");
 		$this->db->from("alunos");
 		$this->db->where("email", $email);
@@ -14,6 +14,13 @@ class Usuarios_model extends CI_Model{
 		$usuario = $this->db->get()->row_array();
 		return $usuario;
 	}   
+	public function buscarExistente($email) {
+		$this->db->select("alunos.*");
+		$this->db->from("alunos");
+		$this->db->where("email", $email);
+		$usuario = $this->db->get()->row_array();
+		return $usuario;
+	} 
 	public function buscarAluno($id) {
 		$this->db->select("alunos.*");
 		$this->db->from("alunos");

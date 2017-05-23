@@ -17,7 +17,7 @@ class Usuario extends REST_Controller {
 	public function login_post() {
 		$email = $this->post("email");
 		$senha = $this->post("senha");
-		$resultado = $this->Usuarios_model->buscar2($email,md5($senha));
+		$resultado = $this->Usuarios_model->buscarLogin($email,md5($senha));
 		if(!$email && !$senha){
 			$this->response("null",400);
 
@@ -40,18 +40,25 @@ class Usuario extends REST_Controller {
 			"senha" => md5($senha)
 
 			);
-		$resultado = $this->Usuarios_model->inserir($usuario);
-		if(!$nome && !$email && !$senha){
-			$this->response("null",400);
+		$existir = $this->Usuarios_model->buscarExistente($email);
+		if($existir){
+			$this->response(array('erro' => 'Email já cadastrado'),200);
+
 		}else{
-			if($resultado){
-				$this->response(array('success' => 'Usuario cadastrado com sucesso'),200);
-				
+			$resultado = $this->Usuarios_model->inserir($usuario);
+			if(!$nome && !$email && !$senha){
+				$this->response("null",400);
 			}else{
-				$this->response(array('erro' => 'Algum erro qualquer'),200);
-				
+				if($resultado){
+					$this->response(array('success' => 'Usuario cadastrado com sucesso'),200);
+
+				}else{
+					$this->response(array('erro' => 'Algum erro qualquer'),200);
+
+				}
 			}
 		}
+		
 	}
 
 	public function listar_get(){

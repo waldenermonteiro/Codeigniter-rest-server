@@ -61,28 +61,10 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <?php
-                        $atributos3 = array('class' => 'control-label col-md-3 col-sm-3 col-xs-12');
-                        echo form_label("Descricao *", "descricao", $atributos3); ?>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <?php
-                            echo form_input(array(
-                                "name" => "descricao",
-                                "type" => "text",
-                                "id" => "descricao",
-                                "class" => "form-control col-md-7 col-xs-12",
-                                "maxlength" => "255",
-                                "value" => set_value("descricao", "")
-                                ));
-                            echo form_error("descricao");
-                            ?>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <?=  form_label("Foto *", "userfile", array("class" => "control-label col-md-offset-1 col-md-2 col-sm-3 col-xs-4")); ?>
+                        <?=  form_label("Fotos *", "userfile", array("class" => "control-label col-md-offset-1 col-md-2 col-sm-3 col-xs-4")); ?>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <div class="form-group">
-                            <input name="userfile[]" id="userfile"  type="file" class="file" data-allowed-file-extensions='["jpg", "jpeg","png"]'> 
+                            <input name="userfile[]" id="userfile" multiple="multiple"  type="file" class="file" data-allowed-file-extensions='["jpg", "jpeg","png"]'> 
                         </div>
                         <? echo form_error("userfile[]");?>
                     </div>

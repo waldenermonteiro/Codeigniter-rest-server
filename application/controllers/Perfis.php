@@ -5,7 +5,7 @@ class Perfis extends CI_Controller {
 	private $id;
 	public function __construct(){
 		parent::__construct();
-		$this->load->model("Usuarios_model");
+		$this->load->model("Adms_model");
 		$this->load->helper("idUsuario");
 		$this->id = idUsuario();
 	}
@@ -13,7 +13,7 @@ class Perfis extends CI_Controller {
 
 	public function formulario(){
 
-		$usuario = $this->Usuarios_model->editar($this->id );
+		$usuario = $this->Adms_model->editar($this->id );
 
 		$dados = array("usuario" => $usuario);
 		$this->load->template('perfis/formulario', $dados);
@@ -39,11 +39,11 @@ class Perfis extends CI_Controller {
 				$novaSenha = md5($this->input->post("senha"));
 			}else{
 
-				$novaSenha = $this->Usuarios_model->recuperaSenhaAtual($id);
+				$novaSenha = $this->Adms_model->recuperaSenhaAtual($id);
 				$novaSenha = $novaSenha['senha'];
 			}
 
-			$verificacao = $this->Usuarios_model->verificaEmailAtualizar($id,$this->input->post("email"));
+			$verificacao = $this->Adms_model->verificaEmailAtualizar($id,$this->input->post("email"));
 
 			if($verificacao){
 				$this->session->set_flashdata("danger", "Email já existente");
@@ -55,7 +55,7 @@ class Perfis extends CI_Controller {
 					"email" => $this->input->post("email"),
 					"senha" => $novaSenha
 					);
-				$this->Usuarios_model->atualizar($id,$usuario);
+				$this->Adms_model->atualizar($id,$usuario);
 			}
 
 
@@ -82,14 +82,14 @@ class Perfis extends CI_Controller {
 
 						);
 
-					$this->Usuarios_model->salvaFoto($id,$imagem);
+					$this->Adms_model->salvaFoto($id,$imagem);
 
 				}
 
 				$this->load->model("Usuarios_model");
-				$usuario = $this->Usuarios_model->buscarUsuario($id);
-				$this->session->unset_userdata("usuario_logado");
-				$this->session->set_userdata("usuario_logado", $usuario);
+				$usuario = $this->Adms_model->buscarUsuario($id);
+				$this->session->unset_userdata("adm_logado");
+				$this->session->set_userdata("adm_logado", $usuario);
 				$this->session->set_flashdata("success", "Logado com sucesso");
 
 
@@ -100,9 +100,9 @@ class Perfis extends CI_Controller {
 			}
 		}else{
 
-			$this->load->model("Usuarios_model");
+			$this->load->model("Adms_model");
 
-			$usuario = $this->Usuarios_model->editar($this->id);
+			$usuario = $this->Adms_model->editar($this->id);
 
 			$dados = array("usuario" => $usuario);
 			$this->load->template('perfis/formulario', $usuario);

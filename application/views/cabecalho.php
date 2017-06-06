@@ -88,24 +88,10 @@
                                         <li><?= anchor('aparelhos/gerenciar', 'Gerenciamento de Aparelhos', 'title="News title"'); ?></li>
                                     </ul>
                                 </li>
-                               <!--  <li><a><i class="fa fa-globe"></i>Temas<span
-                                    class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><?= anchor('temas/cadastro', 'Cadastro de Temas', 'title="News title"'); ?></li>
-                                        <li><?= anchor('temas/gerenciar', 'Gerenciamento de Temas', 'title="News title"'); ?></li>
-                                    </ul>
-                                </li>
-                                <li><a><i class="fa fa-video-camera"></i>Video Aulas<span
-                                    class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><?= anchor('videos/cadastro', 'Cadastro de Video Aulas', 'title="News title"'); ?></li>
-                                        <li><?= anchor('videos/gerenciar', 'Gerenciamento de Video Aulas', 'title="News title"'); ?></li>
-                                    </ul>
-                                </li> -->
+                            
                                 <li><a><i class="fa fa-user"></i>Usuários<span
                                     class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><?= anchor('usuarios/cadastro', 'Cadastro de Usuários', 'title="News title"'); ?></li>
                                         <li><?= anchor('usuarios/gerenciar', 'Gerenciamento de Usuários', 'title="News title"'); ?></li>
                                     </ul>
                                 </li>

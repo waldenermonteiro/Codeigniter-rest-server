@@ -4,14 +4,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require_once APPPATH . '/libraries/REST_Controller.php';
 header('Content-type: application/json');
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET");
+header("Access-Control-Allow-Methods: GET, OPTIONS");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
+
 header("Access-Control-Allow-Headers: Content-Type, Content-Length, Accept-Encoding");
 
 class Usuario extends REST_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model("Usuarios_model");
+		$this->load->model("Aparelhos_model");
+		$this->load->model("Planos_model");
 
 	}
 	public function login_post() {
@@ -30,6 +35,7 @@ class Usuario extends REST_Controller {
 		}
 
 	}
+
 	public function insere_post(){
 		$nome = $this->post("nome");
 		$email = $this->post("email");
@@ -71,6 +77,7 @@ class Usuario extends REST_Controller {
 		}
 		
 	}
+
 	public function listar_post(){
 		$usuarios = $this->Usuarios_model->listar();
 		if($usuarios){
@@ -80,6 +87,7 @@ class Usuario extends REST_Controller {
 		}
 		
 	}
+
 	public function buscar_post(){
 		$id = $this->post("id");
 		if(!$id){

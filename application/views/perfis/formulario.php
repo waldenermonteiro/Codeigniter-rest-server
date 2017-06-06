@@ -94,7 +94,7 @@
               "class" => "form-control",
               "id"  => "id",
               "type"  => "hidden",
-              "value" => $this->session->usuario_logado['id']
+              "value" => $this->session->adm_logado['id']
 
               ));
               ?>

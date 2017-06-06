@@ -14,13 +14,13 @@ class Aparelhos extends CI_Controller{
 	}
 	public function inserir(){
 		$this->form_validation->set_rules("nome","nome","required|min_length[4]");
-		$this->form_validation->set_rules("descricao","descricao","required");
 		$this->form_validation->set_error_delimiters("<p class='alert alert-danger' style='font-size: 16px;padding:3px;'> ","</p>");
 		$sucesso = $this->form_validation->run();
 		$id= $this->input->post("id");
 		if($sucesso){
 
 			$aparelhos = doUpload($_FILES, 800, 800, './uploads/aparelhos/');
+
 
 			$erro = array_key_exists('error', $aparelhos);
 			if($erro !== false ){
@@ -34,15 +34,14 @@ class Aparelhos extends CI_Controller{
 				}
 
 			}else{
-				foreach ($aparelhos as $aparelho) {
 					$aparelho = array(
 						"nome" => $this->input->post("nome"),
-						"descricao" => $this->input->post("descricao"),
-						"imagem" => $aparelho['upload_data']['file_name'],
+						"imagem" => $aparelhos[0]['upload_data']['file_name'],
+						"modo_operacao" => $aparelhos[1]['upload_data']['file_name']
 
 						);
-					$this->Aparelhos_model->inserir($aparelho);
-				}
+					$this->Aparelhos_model->inserirAparelho($aparelho);
+				
 				$this->session->set_flashdata("success", "Aparelho cadastrado com sucesso");
 				redirect("aparelhos/cadastro");
 			}
@@ -65,7 +64,6 @@ class Aparelhos extends CI_Controller{
 	}
 	public function atualizar(){
 		$this->form_validation->set_rules("nome","nome","required|min_length[4]");
-		$this->form_validation->set_rules("descricao","descricao","required");
 		$this->form_validation->set_error_delimiters("<p class='alert alert-danger' style='font-size: 16px;padding:3px;'> ","</p>");
 		$sucesso = $this->form_validation->run();
 		$id= $this->input->post("id");
@@ -85,15 +83,15 @@ class Aparelhos extends CI_Controller{
 				}
 
 			}else{
-				foreach ($aparelhos as $aparelho) {
+
 					$aparelho = array(
 						"nome" => $this->input->post("nome"),
-						"descricao" => $this->input->post("descricao"),
-						"imagem" => $aparelho['upload_data']['file_name'],
+						"imagem" => $aparelhos[0]['upload_data']['file_name'],
+						"modo_operacao" => $aparelhos[1]['upload_data']['file_name']
 
 						);
 					$status = $this->Aparelhos_model->atualizar($id,$aparelho);
-				}
+			
 				$this->session->set_flashdata('success', 'Aparelho atualizado com sucesso.');
 				redirect("aparelhos/gerenciar");
 			}
